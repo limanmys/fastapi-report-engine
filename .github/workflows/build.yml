@@ -64,8 +64,7 @@ jobs:
         mv /tmp/report-engine-build.deb /tmp/report-engine-${{ github.run_number }}-x64.deb
         rm -rf $DEBIAN_PATH
        
-        sed -i s/%VERSION%/${{ github.run_number }}/g scripts/redhat/report-engine.spec
-        rpmbuild -ba scripts/redhat/report-engine.spec --define "_app_dir $TMP_DIR" --define "_rpmdir /tmp" --define "_rpmfilename report-engine-${{ github.run_number }}-x64.rpm"
+      
     - name: Release
       id: create_release
       uses: softprops/action-gh-release@v1
