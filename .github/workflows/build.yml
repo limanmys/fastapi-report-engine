@@ -55,8 +55,7 @@ jobs:
         
         cp ./scripts/debian/control $DEBIAN_PATH/control
         cp ./scripts/debian/postinst $DEBIAN_PATH/postinst
-        ls -la
-        cp report-engine $SERVER_BIN_PATH/report-engine
+        cp dist/report-engine $SERVER_BIN_PATH/report-engine
         
         sed -i s/%VERSION%/${{ github.run_number }}/g $DEBIAN_PATH/control
         chmod 775 $DEBIAN_PATH/postinst
