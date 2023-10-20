@@ -53,9 +53,13 @@ jobs:
         mkdir $DEBIAN_PATH
         mkdir -p $SERVER_BIN_PATH
         
+        mkdir -p $SERVER_BIN_PATH/results
+        mkdir -p $SERVER_BIN_PATH/reports
+        
         cp ./scripts/debian/control $DEBIAN_PATH/control
         cp ./scripts/debian/postinst $DEBIAN_PATH/postinst
         cp dist/report-engine $SERVER_BIN_PATH/report-engine
+        cp templates/ $SERVER_BIN_PATH/templates
         
         sed -i s/%VERSION%/${{ github.run_number }}/g $DEBIAN_PATH/control
         chmod 775 $DEBIAN_PATH/postinst
