@@ -5,6 +5,7 @@ from helpers.render import RenderClass
 from helpers.docx2pdf import Converter
 import uvicorn
 import os
+import csv, time
 
 app = FastAPI()
 
@@ -12,6 +13,21 @@ app = FastAPI()
 def CreatePDFReport(body: ReportCreateRequest):
     RenderClass.render(body)
     return FileResponse(Converter.docx2pdf(body.TemplateID))
+
+@app.post("/csv",summary="Creates a csv report.", tags=["Report"])
+def CreatePDFReport(body: ReportCreateRequest):
+    filename = time.time()
+    with open("./reports/%d.csv" % filename, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(body.Columns)
+
+        for data in body.Data:
+            row = []
+            for column in body.Columns:
+                row.append(data[column])
+            writer.writerow(row)
+
+    return FileResponse("./reports/%d.csv" % filename)
 
 @app.get("/templates",summary="Lists all templates.", tags=["Template"])
 def ListTemplates():
@@ -60,10 +76,9 @@ def SaveTemplate(file: UploadFile = File(...)):
     
     return {"message": f"Successfully uploaded {name}"}
 
-
 def serve():
     """Serve the web application."""
-    uvicorn.run(app, port=8000)
+    uvicorn.run(app, port=8001)
 
 if __name__ == "__main__":
     serve()
