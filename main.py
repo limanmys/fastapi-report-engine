@@ -37,7 +37,7 @@ def ListTemplates(name: str):
     
     return res
 
-@app.delete("/templates/{name}",summary="Lists all templates.", tags=["Template"])
+@app.delete("/templates/{name}",summary="Deletes a template.", tags=["Template"])
 def ListTemplates(name: str):
     os.remove(os.getcwd() + "/templates/" + name)
     return "Item deleted successfully."
