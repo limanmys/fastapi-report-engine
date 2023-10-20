@@ -1,4 +1,3 @@
-
 name: FastAPI Report Engine | Build Yaml
 on:
   push:
@@ -28,8 +27,8 @@ jobs:
     needs: naming
     runs-on: ubuntu-20.04
     steps:
-    - name: Install requirements
-    - run: |
+    - name: Build
+      run: |
           sudo apt install python3-pip -y
           pip3 install -r requirements.txt 
           pip3 install pyinstaller
@@ -37,6 +36,7 @@ jobs:
     - name: Build
       run: |
           ~/.local/bin/pyinstaller -y --clean main.py --onefile
+
     - name: Make DEB package
       run: |
         sudo apt install rpm -y
