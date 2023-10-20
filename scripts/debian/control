@@ -1,0 +1,8 @@
+Package: report-engine
+Version: %VERSION%
+Section: utils
+Architecture: amd64
+Priority: optional
+Maintainer: Zeki Ahmet Bayar <zekiahmetbayar1@gmail.com>
+Depends: unzip
+Description: fastapi report engine for liman backend services

@@ -1,0 +1,77 @@
+
+name: FastAPI Report Engine | Build Yaml
+on:
+  push:
+    branches-ignore:
+      - 'releases/*'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [sync]
+
+jobs:
+  naming: 
+    runs-on: ubuntu-20.04
+    steps:
+    - id: naming
+      run: |
+        [ "$GITHUB_REF" == "refs/heads/master" ] && export PRERELEASE=false || export PRERELEASE=true
+        [ "$GITHUB_REF" == "refs/heads/master" ] && export NAME="Release ${{ github.run_number }}" || export NAME="${GITHUB_REF#refs/heads/} release ${{ github.run_number }}"
+        [ "$GITHUB_REF" == "refs/heads/master" ] && export TAG_NAME="release.${{ github.run_number }}" || export TAG_NAME="${GITHUB_REF#refs/heads/}.release.${{ github.run_number }}"
+        echo "::set-output name=prerelease::${PRERELEASE}"
+        echo "::set-output name=name::${NAME}"
+        echo "::set-output name=tag_name::${TAG_NAME}"
+    outputs:
+      prerelease: ${{ steps.naming.outputs.prerelease }}
+      name: ${{ steps.naming.outputs.name }}
+      tag_name: ${{ steps.naming.outputs.tag_name }}
+  build:
+    needs: naming
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Install requirements
+    - run: |
+          sudo apt install python3-pip -y
+          pip3 install -r requirements.txt 
+          pip3 install pyinstaller
+
+    - name: Build
+      run: |
+          ~/.local/bin/pyinstaller -y --clean main.py --onefile
+    - name: Make DEB package
+      run: |
+        sudo apt install rpm -y
+        
+        TMP_DIR=/tmp/report-engine-build
+        DEBIAN_PATH=$TMP_DIR/DEBIAN
+        SERVER_BIN_PATH=$TMP_DIR/opt/report-engine
+       
+        rm -rf $TMP_DIR
+        mkdir $TMP_DIR
+        mkdir $DEBIAN_PATH
+        mkdir -p $SERVER_BIN_PATH
+        
+        cp ./scripts/debian/control $DEBIAN_PATH/control
+        cp ./scripts/debian/postinst $DEBIAN_PATH/postinst
+        cp main $SERVER_BIN_PATH/report-engine
+        
+        sed -i s/%VERSION%/${{ github.run_number }}/g $DEBIAN_PATH/control
+        chmod 775 $DEBIAN_PATH/postinst
+
+        dpkg-deb --build $TMP_DIR
+        mv /tmp/report-engine-build.deb /tmp/report-engine-${{ github.run_number }}-x64.deb
+        rm -rf $DEBIAN_PATH
+       
+        sed -i s/%VERSION%/${{ github.run_number }}/g scripts/redhat/report-engine.spec
+        rpmbuild -ba scripts/redhat/report-engine.spec --define "_app_dir $TMP_DIR" --define "_rpmdir /tmp" --define "_rpmfilename report-engine-${{ github.run_number }}-x64.rpm"
+    - name: Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      with:
+          files: |
+            /tmp/report-engine-${{ github.run_number }}-x64.deb
+            /tmp/report-engine-${{ github.run_number }}-x64.rpm
+          name: "${{ needs.naming.outputs.name }}"
+          tag_name: "${{ needs.naming.outputs.tag_name }}"
+          prerelease: ${{ needs.naming.outputs.prerelease }}

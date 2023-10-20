@@ -1,0 +1,4 @@
+fastapi
+docxtpl
+python-multipart
+uvicorn[standard]

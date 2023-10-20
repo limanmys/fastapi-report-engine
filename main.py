@@ -1,10 +1,9 @@
-
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
 from models.Request import ReportCreateRequest
 from helpers.render import RenderClass
 from helpers.docx2pdf import Converter
-import uuid
+import uvicorn
 import os
 
 app = FastAPI()
@@ -60,3 +59,11 @@ def SaveTemplate(file: UploadFile = File(...)):
         os.rename(name, "./templates/" + name)
     
     return {"message": f"Successfully uploaded {name}"}
+
+
+def serve():
+    """Serve the web application."""
+    uvicorn.run(app, port=8000)
+
+if __name__ == "__main__":
+    serve()
