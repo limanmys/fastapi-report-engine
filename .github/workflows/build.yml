@@ -25,7 +25,7 @@ jobs:
       tag_name: ${{ steps.naming.outputs.tag_name }}
   build:
     needs: naming
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Build
@@ -38,7 +38,6 @@ jobs:
 
     - name: Build
       run: |
-          touch __init__.py
           ~/.local/bin/pyinstaller -y --name report-engine --clean main.py --onefile
 
     - name: Make DEB package
