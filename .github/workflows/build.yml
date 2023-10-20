@@ -38,6 +38,7 @@ jobs:
 
     - name: Build
       run: |
+          touch __init__.py
           ~/.local/bin/pyinstaller -y --name report-engine --clean main.py --onefile
 
     - name: Make DEB package
