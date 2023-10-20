@@ -31,6 +31,7 @@ jobs:
       run: |
           sudo apt install python3-pip -y
           pwd
+          ls -la
           pip3 install -r requirements.txt
           pip3 install pyinstaller
 
