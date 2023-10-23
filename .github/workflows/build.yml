@@ -25,7 +25,7 @@ jobs:
       tag_name: ${{ steps.naming.outputs.tag_name }}
   build:
     needs: naming
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@master
     - name: Build
