@@ -29,6 +29,7 @@ def CreatePDFReport(body: ReportCreateRequest):
 
     return FileResponse("./reports/%d.csv" % filename)
 
+# Lists all templates
 @app.get("/templates",summary="Lists all templates.", tags=["Template"])
 def ListTemplates():
     base_path = os.getcwd() + "/templates/"
@@ -43,7 +44,8 @@ def ListTemplates():
 
     return result
 
-@app.get("/templates/{name}",summary="Lists all templates.", tags=["Template"])
+# Get single template
+@app.get("/templates/{name}",summary="Get single template.", tags=["Template"])
 def ListTemplates(name: str):
     base_path = os.getcwd() + "/templates/" + name
     file_stats = os.stat(base_path)
@@ -53,12 +55,13 @@ def ListTemplates(name: str):
     
     return res
 
+# Delete template
 @app.delete("/templates/{name}",summary="Deletes a template.", tags=["Template"])
 def ListTemplates(name: str):
     os.remove(os.getcwd() + "/templates/" + name)
     return "Item deleted successfully."
 
-
+# Upload new template
 @app.post("/templates", summary="Uploads new template.", tags=["Template"])
 def SaveTemplate(file: UploadFile = File(...)):
     try:
