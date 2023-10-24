@@ -78,7 +78,7 @@ def SaveTemplate(file: UploadFile = File(...)):
 
 def serve():
     """Serve the web application."""
-    uvicorn.run(app, port=8001)
+    uvicorn.run(app, port=8001, host='0.0.0.0')
 
 if __name__ == "__main__":
     serve()
