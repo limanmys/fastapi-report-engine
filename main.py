@@ -4,8 +4,10 @@ from models.Request import ReportCreateRequest
 from helpers.render import RenderClass
 from helpers.docx2pdf import Converter
 import uvicorn
-import os
+import os, base64
 import csv, time
+from pdf2image import convert_from_path
+
 
 app = FastAPI()
 
@@ -54,6 +56,22 @@ def ListTemplates(name: str):
     res["size"] = file_stats.st_size
     
     return res
+
+# Get template's preview
+@app.get("/templates/preview/{name}",summary="Get template's preview.", tags=["Template"])
+def TemplatePreview(name: str):
+    base_path = os.getcwd() + "/templates/" + name
+    pdf_path = Converter.docx2preview(base_path)
+    pdf_path = pdf_path.replace("docx", "pdf")
+    
+    pages = convert_from_path(pdf_path)
+    name = name.replace(".docx", ".png")
+    pages[0].save(name, 'png')
+    with open(name, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    response = dict()
+    response["encoded"] = encoded_string
+    return response
 
 # Delete template
 @app.delete("/templates/{name}",summary="Deletes a template.", tags=["Template"])

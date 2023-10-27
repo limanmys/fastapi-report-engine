@@ -7,3 +7,7 @@ class Converter():
         os.remove(docx_file)
 
         return "./reports/" + file_name + ".pdf"
+    
+    def docx2preview(file_name):
+        os.system('soffice --headless --norestore --writer --convert-to pdf %s --outdir %s' % (file_name, "./templates"))
+        return file_name

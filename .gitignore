@@ -160,3 +160,4 @@ cython_debug/
 *pdf
 results/
 reports/
+*.png
