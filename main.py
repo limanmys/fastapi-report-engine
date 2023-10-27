@@ -40,9 +40,10 @@ def ListTemplates():
     for file in [f for f in os.listdir(base_path)]:
         res = dict()
         file_stats = os.stat(base_path+ file)
-        res["name"] = file
-        res["size"] = file_stats.st_size
-        result.append(res)
+        if os.path.splitext(file)[1] == ".docx":
+            res["name"] = file
+            res["size"] = file_stats.st_size
+            result.append(res)
 
     return result
 
