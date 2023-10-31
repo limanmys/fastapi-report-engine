@@ -2,7 +2,7 @@ Name: report-engine
 Version: %VERSION%
 Release: 0
 License: MIT
-Requires: openssl, unzip
+Requires: openssl, unzip, libreoffice
 Prefix: /opt
 Summary: fastapi report engine for liman backend services
 Group: Applications/System

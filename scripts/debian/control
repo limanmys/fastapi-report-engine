@@ -4,5 +4,5 @@ Section: utils
 Architecture: amd64
 Priority: optional
 Maintainer: Zeki Ahmet Bayar <zekiahmetbayar1@gmail.com>
-Depends: unzip, poppler-utils
+Depends: unzip, poppler-utils, libreoffice
 Description: fastapi report engine for liman backend services
