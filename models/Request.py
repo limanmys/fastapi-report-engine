@@ -7,4 +7,5 @@ class ReportCreateRequest(BaseModel):
     ReadableColumns: typing.List[str] = Field(default_factory=list, alias="readable_columns")
     Header: str = Field(alias="header")
     Date: str = Field(alias="date")
+    Seperator: str = Field(alias="seperator")
     TemplateID: str = Field(alias="template_id")

@@ -21,8 +21,10 @@ def CreatePDFReport(body: ReportCreateRequest):
     filename = time.time()
     with open("./reports/%d.csv" % filename, 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
+        row = ["sep=" + body.Seperator]
+        
+        writer.writerow(row)
         writer.writerow(body.Columns)
-
         for data in body.Data:
             row = []
             for column in body.Columns:
