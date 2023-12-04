@@ -20,7 +20,7 @@ def CreatePDFReport(body: ReportCreateRequest):
 def CreatePDFReport(body: ReportCreateRequest):
     filename = time.time()
     with open("./reports/%d.csv" % filename, 'w', encoding='UTF8', newline='') as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, delimiter=body.Seperator)
         row = ["sep=" + body.Seperator]
         
         writer.writerow(row)
