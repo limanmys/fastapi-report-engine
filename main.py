@@ -25,7 +25,7 @@ def CreatePDFReport(body: ReportCreateRequest):
         
         writer.writerow(row)
         writer.writerow(body.Header)
-        writer.writerow(body.Columns)
+        writer.writerow(body.ReadableColumns)
         for data in body.Data:
             row = []
             for column in body.Columns:
