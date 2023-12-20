@@ -1,12 +1,12 @@
 import os
 
 class Converter():
-    def docx2pdf(file_name):
-        docx_file = "./results/%d.docx" % file_name
-        os.system('soffice --headless --norestore --writer --convert-to pdf ./%s --outdir %s' % (docx_file, "./reports"))
-        os.remove(docx_file)
-
-        return "./reports/%s.pdf" % docx_file
+    def docx2pdf(timestamp):
+        template_filename = "./results/%d.docx" % timestamp
+        os.system('soffice --headless --norestore --writer --convert-to pdf ./%s --outdir %s' % (template_filename, "./reports"))
+        os.remove(template_filename)
+        report_filename = "./reports/%d.docx.pdf" % timestamp
+        return report_filename
     
     def docx2preview(file_name):
         os.system('soffice --headless --norestore --writer --convert-to pdf %s --outdir %s' % (file_name, "./templates"))
