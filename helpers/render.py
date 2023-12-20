@@ -7,4 +7,4 @@ class RenderClass():
             item["idx"] = idx
             body.Data[idx] = item
         template.render(body)    
-        template.save("./results/%s.docx" % filename)
+        template.save("./results/%d.docx" % filename)
