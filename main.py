@@ -13,8 +13,9 @@ app = FastAPI()
 
 @app.post("/pdf",summary="Creates a pdf report.", tags=["Report"])
 def CreatePDFReport(body: ReportCreateRequest):
+    filename = time.time()
     RenderClass.render(body)
-    return FileResponse(Converter.docx2pdf(body.TemplateID))
+    return FileResponse(Converter.docx2pdf(filename))
 
 @app.post("/csv",summary="Creates a csv report.", tags=["Report"])
 def CreatePDFReport(body: ReportCreateRequest):
