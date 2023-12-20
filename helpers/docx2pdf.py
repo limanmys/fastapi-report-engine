@@ -4,8 +4,7 @@ class Converter():
     def docx2pdf(timestamp):
         template_filename = "./results/%d.docx" % timestamp
         os.system('soffice --headless --norestore --writer --convert-to pdf ./%s --outdir %s' % (template_filename, "./reports"))
-        os.remove(template_filename)
-        report_filename = "./reports/%d.docx.pdf" % timestamp
+        report_filename = "./reports/%d.pdf" % timestamp
         return report_filename
     
     def docx2preview(file_name):
