@@ -12,6 +12,6 @@ sudo journalctl -u report-engine.service -f
 ```
 
 ## Dokümantasyon
-Servis sağlıklı bir şekilde çalışıyorken `<IP_ADDR>:8001/docs` adresi üzerinden Swagger dokümantasyonuna ulaşılabilir. Ayrıca Postman dokümantasyonu için .json dosyası [link](https://github.com/limanmys/fastapi-report-engine/docs/report-engine.postman_collection.json) üzerinden indirilerek kullanılabilir.
+Servis sağlıklı bir şekilde çalışıyorken `<IP_ADDR>:8001/docs` adresi üzerinden Swagger dokümantasyonuna ulaşılabilir. Ayrıca Postman dokümantasyonu için .json dosyası [link](https://github.com/limanmys/fastapi-report-engine/blob/master/docs/report-engine.postman_collection.json) üzerinden indirilerek kullanılabilir.
 
 ![swagger.png](./images/swagger.png)
