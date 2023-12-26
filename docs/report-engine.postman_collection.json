@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "52afb44c-a8f7-4864-819b-7aaef59fd810",
+		"name": "FastAPI Report Engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "PDF",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"name\": \"Test1\",\n            \"count\": \"3\",\n            \"alternatives\": [\n                {\n                    \"name\": \"i'm alternative 1\"\n                },\n                {\n                    \"name\": \"i'm alternative 2\"\n                },\n                {\n                    \"name\": \"i'm alternative 3\"\n                }\n            ]\n        },\n        {\n            \"name\": \"Test2\",\n            \"count\": \"1\",\n            \"alternatives\": [\n                {\n                    \"name\": \"i'm alternative 1\"\n                }\n            ]\n        },\n        {\n            \"name\": \"Test2\",\n            \"count\": \"1\",\n            \"alternatives\": [\n                {\n                    \"name\": \"i'm alternative 1\"\n                }\n            ]\n        },\n        {\n            \"name\": \"Test2\",\n            \"count\": \"1\",\n            \"alternatives\": [\n                {\n                    \"name\": \"i'm alternative 1\"\n                }\n            ]\n        },\n        {\n            \"name\": \"Test2\",\n            \"count\": \"1\",\n            \"alternatives\": [\n                {\n                    \"name\": \"i'm alternative 1\"\n                }\n            ]\n        }\n    ],\n    \"header\": \"\",\n    \"date\": \"15.09.2023 18:11\",\n    \"template_id\": \"alternatives.docx\",\n    \"columns\": [],\n    \"seperator\" : \",\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/pdf",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"pdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Csv",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"name\": \"makine1\",\n            \"ipv4_address\" : \"10.11.12.13\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        }\n    ],\n    \"header\": \"Generic Report Test\",\n    \"date\": \"15.09.2023 18:11\",\n    \"seperator\" : \",\",\n    \"template_id\" : \"test.docx\",\n    \"columns\" : [\"name\", \"ipv4_address\", \"test1\", \"test2\", \"mac_address\", \"mac_address2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/csv",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"csv"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Csv",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": [\n        {\n            \"name\": \"makine1\",\n            \"ipv4_address\" : \"10.11.12.13\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        },\n         {\n            \"name\": \"makine2\",\n            \"ipv4_address\" : \"10.11.12.14\",\n            \"mac_address\" : \"qweqwe\",\n            \"test1\" : \"test2\",\n            \"mac_address2\" : \"qweqwe\",\n            \"test2\" : \"test2\"\n        }\n    ],\n    \"header\": \"Generic Report Test\",\n    \"date\": \"15.09.2023 18:11\",\n    \"template_id\" : \"test.docx\",\n    \"columns\" : [\"name\", \"ipv4_address\", \"test1\", \"test2\", \"mac_address\", \"mac_address2\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8001/csv",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"csv"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "date",
+									"value": "Fri, 20 Oct 2023 14:00:49 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-type",
+									"value": "text/csv; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "432"
+								},
+								{
+									"key": "last-modified",
+									"value": "Fri, 20 Oct 2023 14:00:50 GMT"
+								},
+								{
+									"key": "etag",
+									"value": "c81a0f5bfee58d1acc9a7cb23fbecbf0"
+								}
+							],
+							"cookie": [],
+							"body": "name,ipv4_address,test1,test2,mac_address,mac_address2\r\nmakine1,10.11.12.13,test2,test2,qweqwe,qweqwe\r\nmakine2,10.11.12.14,test2,test2,qweqwe,qweqwe\r\nmakine2,10.11.12.14,test2,test2,qweqwe,qweqwe\r\nmakine2,10.11.12.14,test2,test2,qweqwe,qweqwe\r\nmakine2,10.11.12.14,test2,test2,qweqwe,qweqwe\r\nmakine2,10.11.12.14,test2,test2,qweqwe,qweqwe\r\nmakine2,10.11.12.14,test2,test2,qweqwe,qweqwe\r\nmakine2,10.11.12.14,test2,test2,qweqwe,qweqwe\r\n"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/zeki/Desktop/alternatives.docx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER}}/templates",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/templates",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SERVER}}/templates",
+									"host": [
+										"{{SERVER}}"
+									],
+									"path": [
+										"templates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 03 Oct 2023 12:54:23 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "35"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"test.docx\",\n        \"size\": 19692\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/templates/template.docx",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"templates",
+								"template.docx"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE}}/templates/test.docx",
+									"host": [
+										"{{BASE}}"
+									],
+									"path": [
+										"templates",
+										"test.docx"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 03 Oct 2023 13:02:12 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "33"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"test.docx\",\n    \"size\": 19692\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/templates/example.docx",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"templates",
+								"example.docx"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE}}/templates/as.docx",
+									"host": [
+										"{{BASE}}"
+									],
+									"path": [
+										"templates",
+										"as.docx"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 03 Oct 2023 13:03:31 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "28"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"Item deleted successfully.\""
+						}
+					]
+				},
+				{
+					"name": "Template Preview",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/templates/previev/alternative.docx",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"templates",
+								"previev",
+								"alternative.docx"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SERVER",
+			"value": "http://localhost:8001",
+			"type": "string"
+		}
+	]
+}
