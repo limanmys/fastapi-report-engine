@@ -12,6 +12,6 @@ sudo journalctl -u report-engine.service -f
 ```
 
 ## Documentation
-While the service is running properly, Swagger documentation can be accessed at [localhost:8001/docs](localhost:8001/docs).
+While the service is running properly, Swagger documentation can be accessed at [localhost:8001/docs](localhost:8001/docs). Additionally, the .json file for Postman documentation can be downloaded from the [link](https://github.com/limanmys/fastapi-report-engine/docs/report-engine.postman_collection.json).
 
 ![swagger.png](./images/swagger.png)
