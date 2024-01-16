@@ -6,6 +6,10 @@ WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
 
+RUN apt update && apt install unzip poppler-utils libreoffice -y
+
+RUN mkdir reports results
+
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./ /code/
